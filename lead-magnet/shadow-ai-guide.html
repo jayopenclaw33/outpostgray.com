@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Shadow AI Executive Survival Guide | Outpost Gray</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:        #0A1628;
+      --navy-mid:    #0d1e38;
+      --navy-card:   #0f2240;
+      --navy-border: #1a3260;
+      --gray:        #5a6882;
+      --gray-light:  #8a9db8;
+      --white:       #E8EDF5;
+      --blue:        #0066FF;
+      --gold:        #D4A017;
+      --gold-soft:   rgba(212,160,23,0.12);
+      --red:         #e53e3e;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fff;
+      color: #1a1a2e;
+      line-height: 1.65;
+      font-size: 10pt;
+    }
+
+    /* ── PRINT PAGES ── */
+    .page {
+      width: 8.5in;
+      min-height: 11in;
+      margin: 0 auto 0.5rem;
+      position: relative;
+      overflow: hidden;
+      page-break-after: always;
+    }
+
+    @media print {
+      body { margin: 0; background: #fff; }
+      .page { margin: 0; width: 100%; min-height: 100vh; page-break-after: always; }
+      .no-print { display: none !important; }
+    }
+
+    @media screen {
+      body { background: #c8cdd6; padding: 1rem 0 3rem; }
+      .page { box-shadow: 0 8px 40px rgba(0,0,0,0.25); }
+    }
+
+    /* ── COVER PAGE ── */
+    .cover {
+      background: var(--navy);
+      color: var(--white);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 0;
+    }
+
+    .cover-top {
+      background: linear-gradient(135deg, #060d1a 0%, #0A1628 60%, #091629 100%);
+      padding: 3rem 3.5rem 2rem;
+      position: relative;
+      overflow: hidden;
+      flex: 1;
+    }
+
+    .cover-top::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(0,102,255,0.1) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .cover-top::after {
+      content: '';
+      position: absolute;
+      bottom: -50px; left: 200px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(212,160,23,0.06) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .cover-grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,102,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,102,255,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(ellipse 80% 80% at 60% 40%, black 20%, transparent 100%);
+    }
+
+    .cover-brand {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 4rem;
+    }
+
+    .cover-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+    .cover-logo span { color: var(--gold); }
+    .cover-logo-divider {
+      width: 1px;
+      height: 24px;
+      background: rgba(255,255,255,0.2);
+    }
+    .cover-tagline {
+      font-size: 0.62rem;
+      color: var(--gray-light);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .cover-classification {
+      position: relative;
+      z-index: 2;
+      display: inline-block;
+      background: rgba(212,160,23,0.15);
+      border: 1px solid rgba(212,160,23,0.4);
+      color: var(--gold);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.85rem;
+      border-radius: 4px;
+      margin-bottom: 2rem;
+    }
+
+    .cover-main {
+      position: relative;
+      z-index: 2;
+    }
+
+    .cover-eyebrow {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 1rem;
+    }
+
+    .cover-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
+      max-width: 600px;
+    }
+
+    .cover-title .accent-gold { color: var(--gold); }
+    .cover-title .accent-blue { color: var(--blue); }
+
+    .cover-subtitle {
+      font-size: 1rem;
+      color: var(--gray-light);
+      max-width: 500px;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+
+    .cover-stats-row {
+      display: flex;
+      gap: 2.5rem;
+      position: relative;
+      z-index: 2;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .cover-stat strong {
+      display: block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .cover-stat span {
+      font-size: 0.72rem;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+    }
+
+    .cover-bottom {
+      background: var(--navy-mid);
+      border-top: 1px solid var(--navy-border);
+      padding: 1.5rem 3.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cover-author strong {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--white);
+      display: block;
+    }
+    .cover-author span {
+      font-size: 0.72rem;
+      color: var(--gray-light);
+    }
+
+    .cover-year {
+      font-size: 0.72rem;
+      color: var(--gray);
+      letter-spacing: 0.1em;
+    }
+
+    /* ── CONTENT PAGES ── */
+    .content-page {
+      background: #fff;
+      padding: 2.75rem 3.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .content-page.dark {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 1.25rem;
+      border-bottom: 2px solid var(--navy);
+      margin-bottom: 2rem;
+    }
+
+    .content-page.dark .page-header {
+      border-bottom-color: var(--navy-border);
+    }
+
+    .page-header-brand {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .content-page.dark .page-header-brand { color: var(--gray); }
+
+    .page-header-chapter {
+      font-size: 0.68rem;
+      color: var(--gold);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .chapter-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    h1.chapter-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.9rem;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--navy);
+      margin-bottom: 1.25rem;
+    }
+
+    .content-page.dark h1.chapter-title { color: var(--white); }
+
+    .chapter-intro {
+      font-size: 0.95rem;
+      color: #3a4a6a;
+      line-height: 1.8;
+      margin-bottom: 1.75rem;
+      max-width: 95%;
+    }
+    .content-page.dark .chapter-intro { color: var(--gray-light); }
+
+    h2.section-h {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 1.5rem 0 0.6rem;
+    }
+    .content-page.dark h2.section-h { color: var(--white); }
+
+    p.body-text {
+      font-size: 0.9rem;
+      color: #3a4a6a;
+      line-height: 1.8;
+      margin-bottom: 0.85rem;
+    }
+    .content-page.dark p.body-text { color: var(--gray-light); }
+
+    /* Callout boxes */
+    .callout {
+      border-radius: 10px;
+      padding: 1.1rem 1.4rem;
+      margin: 1.25rem 0;
+      font-size: 0.88rem;
+      line-height: 1.75;
+    }
+    .callout-red {
+      background: #fff5f5;
+      border-left: 3px solid var(--red);
+      color: #742a2a;
+    }
+    .callout-gold {
+      background: #fffbf0;
+      border-left: 3px solid var(--gold);
+      color: #5a3a00;
+    }
+    .callout-blue {
+      background: #ebf4ff;
+      border-left: 3px solid var(--blue);
+      color: #1a365d;
+    }
+    .content-page.dark .callout-gold {
+      background: rgba(212,160,23,0.1);
+      border-left: 3px solid var(--gold);
+      color: #e2c96a;
+    }
+    .content-page.dark .callout-blue {
+      background: rgba(0,102,255,0.1);
+      border-left: 3px solid var(--blue);
+      color: #90c3ff;
+    }
+    .callout strong { font-weight: 700; }
+
+    /* Threat cards */
+    .threat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+
+    .threat-card {
+      background: #f8faff;
+      border: 1px solid #d1dff7;
+      border-radius: 10px;
+      padding: 1.25rem 1.35rem;
+    }
+
+    .threat-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: rgba(0,102,255,0.15);
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+
+    .threat-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.4rem;
+    }
+
+    .threat-card p {
+      font-size: 0.8rem;
+      color: #4a5a7a;
+      line-height: 1.7;
+    }
+
+    .threat-card .risk-badge {
+      display: inline-block;
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.15rem 0.5rem;
+      border-radius: 3px;
+      margin-bottom: 0.5rem;
+    }
+    .risk-critical { background: #fff0f0; color: #c53030; border: 1px solid #fed7d7; }
+    .risk-high     { background: #fffaf0; color: #c05621; border: 1px solid #fbd38d; }
+
+    /* ── CHECKLIST PAGE ── */
+    .checklist-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+
+    .checklist-item {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      background: #f8faff;
+      border: 1px solid #d1dff7;
+      border-radius: 8px;
+      padding: 0.85rem 1rem;
+    }
+
+    .check-box {
+      width: 18px;
+      height: 18px;
+      border: 2px solid var(--navy-border);
+      border-radius: 4px;
+      flex-shrink: 0;
+      margin-top: 1px;
+      background: #fff;
+    }
+
+    .checklist-item-content h4 {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.2rem;
+    }
+
+    .checklist-item-content p {
+      font-size: 0.74rem;
+      color: #5a6882;
+      line-height: 1.6;
+    }
+
+    /* ── POLICY PAGE ── */
+    .policy-section {
+      background: #f8faff;
+      border: 1px solid #d1dff7;
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .policy-section h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+
+    .policy-template {
+      background: #fff;
+      border: 1px dashed #b0c0e0;
+      border-radius: 6px;
+      padding: 0.85rem 1rem;
+      margin-top: 0.6rem;
+      font-family: 'Courier New', monospace;
+      font-size: 0.78rem;
+      color: #2d3748;
+      line-height: 1.65;
+    }
+
+    .policy-template .placeholder {
+      color: var(--blue);
+      font-style: italic;
+    }
+
+    /* ── BACK COVER ── */
+    .back-cover {
+      background: var(--navy);
+      color: var(--white);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .back-cover-main {
+      flex: 1;
+      padding: 3.5rem 3.5rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .back-cover-main::before {
+      content: '';
+      position: absolute;
+      top: -80px; left: 50%;
+      transform: translateX(-50%);
+      width: 600px; height: 400px;
+      background: radial-gradient(ellipse, rgba(0,102,255,0.08) 0%, transparent 70%);
+    }
+
+    .back-cover-badge {
+      display: inline-block;
+      background: var(--gold-soft);
+      border: 1px solid rgba(212,160,23,0.35);
+      color: var(--gold);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.28rem 0.9rem;
+      border-radius: 4px;
+      margin-bottom: 1.75rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .back-cover-main h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .back-cover-main p {
+      font-size: 0.95rem;
+      color: var(--gray-light);
+      max-width: 500px;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .back-cta-btn {
+      display: inline-block;
+      background: var(--blue);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 0.85rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 0 30px rgba(0,102,255,0.3);
+    }
+
+    .back-cover-services {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .back-service-tag {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--navy-border);
+      color: var(--gray-light);
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.35rem 0.85rem;
+      border-radius: 100px;
+      letter-spacing: 0.05em;
+    }
+
+    .back-cover-footer {
+      background: #060d1a;
+      border-top: 1px solid var(--navy-border);
+      padding: 1.5rem 3.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .back-cover-contact p {
+      font-size: 0.78rem;
+      color: var(--gray-light);
+      margin-bottom: 0.25rem;
+    }
+    .back-cover-contact a { color: var(--gold); text-decoration: none; }
+
+    .back-cover-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      text-align: right;
+    }
+    .back-cover-logo span { color: var(--gold); }
+    .back-cover-logo small {
+      display: block;
+      font-size: 0.6rem;
+      color: var(--gray);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-top: -2px;
+    }
+
+    /* ── NO PRINT TOOLBAR ── */
+    .toolbar {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 999;
+      display: flex;
+      gap: 0.5rem;
+    }
+    .toolbar button {
+      background: var(--navy);
+      color: var(--white);
+      border: 1px solid var(--navy-border);
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+    }
+    .toolbar button:hover { background: var(--blue); }
+
+    /* divider */
+    .rule {
+      border: none;
+      border-top: 1px solid #e2e8f0;
+      margin: 1.5rem 0;
+    }
+    .content-page.dark .rule {
+      border-top-color: var(--navy-border);
+    }
+
+    /* two-col layout */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Toolbar (screen only) -->
+<div class="toolbar no-print">
+  <button onclick="window.print()">🖨️ Print / Save PDF</button>
+  <button onclick="window.location='../index.html'">← Back to Site</button>
+</div>
+
+<!-- ═══════════════════════════════ COVER ═══════════════════════════════ -->
+<div class="page cover">
+  <div class="cover-top">
+    <div class="cover-grid-bg"></div>
+
+    <div class="cover-brand">
+      <div class="cover-logo">OUTPOST<span>GRAY</span></div>
+      <div class="cover-logo-divider"></div>
+      <div class="cover-tagline">AI Security &amp; Cybersecurity Consulting</div>
+    </div>
+
+    <div class="cover-classification">Executive Intelligence Brief</div>
+
+    <div class="cover-main">
+      <div class="cover-eyebrow">The Definitive CISO Guide</div>
+      <h1 class="cover-title">
+        The <span class="accent-gold">Shadow AI</span><br />
+        Executive<br />
+        <span class="accent-blue">Survival Guide</span>
+      </h1>
+      <p class="cover-subtitle">
+        What your board doesn't know about unauthorized AI is already costing you. 
+        This guide covers the 5 critical Shadow AI threats, a 10-point audit checklist, 
+        and how to build an AI Acceptable Use Policy that actually works.
+      </p>
+
+      <div class="cover-stats-row">
+        <div class="cover-stat">
+          <strong>$4.88M</strong>
+          <span>Avg. breach cost (2024)</span>
+        </div>
+        <div class="cover-stat">
+          <strong>77%</strong>
+          <span>Orgs unprepared for AI threats</span>
+        </div>
+        <div class="cover-stat">
+          <strong>65%+</strong>
+          <span>Employees using unsanctioned AI</span>
+        </div>
+        <div class="cover-stat">
+          <strong>$31B</strong>
+          <span>AI security market (2025)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cover-bottom">
+    <div class="cover-author">
+      <strong>Jaclyn "Jax" Scott</strong>
+      <span>Founder &amp; President, Outpost Gray | AI Security Expert | Special Forces Veteran</span>
+    </div>
+    <div class="cover-year">© 2026 OUTPOST GRAY — outpostgray.com</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ PAGE 2: WHAT IS SHADOW AI ═══════════════════════════════ -->
+<div class="page content-page">
+  <div class="page-header">
+    <span class="page-header-brand">Outpost Gray — Shadow AI Executive Survival Guide</span>
+    <span class="page-header-chapter">Chapter 1: Understanding the Threat</span>
+  </div>
+
+  <span class="chapter-label">Chapter 1</span>
+  <h1 class="chapter-title">What Is Shadow AI — And Why It's Already In Your Network</h1>
+
+  <p class="chapter-intro">
+    Shadow AI refers to any artificial intelligence tool, model, application, or system used within your organization without formal IT approval, security review, or governance oversight. It is the AI-era evolution of shadow IT — and it is far more dangerous.
+  </p>
+
+  <div class="callout callout-red">
+    <strong>The Hard Truth:</strong> Studies consistently show that between <strong>55–70% of knowledge workers</strong> are using AI tools — ChatGPT, Claude, Gemini, Copilot plugins, AI coding assistants, AI writing tools, AI summarizers — outside of any sanctioned program. Most of them are inputting sensitive company data, customer information, or proprietary intellectual property as they do it.
+  </div>
+
+  <div class="two-col">
+    <div>
+      <h2 class="section-h">Where Shadow AI Hides</h2>
+      <p class="body-text">Shadow AI doesn't announce itself. It lives inside everyday workflows:</p>
+      <ul style="font-size:0.88rem;color:#3a4a6a;line-height:1.9;padding-left:1.25rem;margin-bottom:0.85rem;">
+        <li>ChatGPT / Claude for drafting emails, reports, contracts</li>
+        <li>GitHub Copilot for software development (outside policy)</li>
+        <li>AI-powered browser extensions summarizing documents</li>
+        <li>Grammarly AI, Notion AI, Otter.ai meeting transcription</li>
+        <li>Personal AI accounts used for work tasks</li>
+        <li>Third-party AI APIs integrated into departmental tools</li>
+        <li>AI-enhanced SaaS products with opt-in training clauses</li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="section-h">Why It's Different From Shadow IT</h2>
+      <p class="body-text">Traditional shadow IT meant an employee using Dropbox instead of SharePoint. Shadow AI is categorically different:</p>
+      <ul style="font-size:0.88rem;color:#3a4a6a;line-height:1.9;padding-left:1.25rem;margin-bottom:0.85rem;">
+        <li><strong>Data ingestion at scale</strong> — AI models consume and process data, not just store it</li>
+        <li><strong>Training implications</strong> — Free AI tiers often use inputs to train models</li>
+        <li><strong>No visibility, no logs</strong> — Zero audit trail of what was shared</li>
+        <li><strong>Regulatory exposure</strong> — HIPAA, GDPR, SOC 2, PCI DSS all implicated</li>
+        <li><strong>Intellectual property risk</strong> — Proprietary data may persist in model memory</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="rule" />
+
+  <h2 class="section-h">The Data Doesn't Lie</h2>
+  <div class="two-col">
+    <div class="callout callout-blue">
+      <strong>Cyberhaven Research (2024):</strong> 11% of data employees paste into ChatGPT is classified as "confidential." For companies with 10,000+ employees, this amounts to tens of thousands of confidential data events per week — invisibly.
+    </div>
+    <div class="callout callout-gold">
+      <strong>Gartner (2024):</strong> By 2026, more than 70% of enterprises will face regulatory scrutiny for AI governance failures — and the majority of incidents will originate from ungoverned, employee-initiated AI usage.
+    </div>
+  </div>
+
+  <p class="body-text">
+    The challenge for security leadership is not purely technical — it is organizational. Shadow AI flourishes where official AI programs are absent, slow, or overly restrictive. Employees are using AI tools because they make work faster and easier. The answer is not to ban everything; it's to build a sanctioned AI ecosystem with clear guardrails — before the absence of one becomes a breach headline.
+  </p>
+</div>
+
+<!-- ═══════════════════════════════ PAGE 3: 5 THREATS ═══════════════════════════════ -->
+<div class="page content-page dark">
+  <div class="page-header">
+    <span class="page-header-brand" style="color:var(--gray)">Outpost Gray — Shadow AI Executive Survival Guide</span>
+    <span class="page-header-chapter">Chapter 2: The Threat Landscape</span>
+  </div>
+
+  <span class="chapter-label">Chapter 2</span>
+  <h1 class="chapter-title">5 Shadow AI Threats Every Executive Must Know</h1>
+
+  <p class="chapter-intro">
+    These aren't theoretical. These are active threat vectors being exploited right now — some by external adversaries, some by your own employees without malicious intent.
+  </p>
+
+  <div class="threat-grid">
+
+    <div class="threat-card" style="background:var(--navy-card);border-color:var(--navy-border);">
+      <span class="risk-badge risk-critical">Critical</span>
+      <div class="threat-num">01</div>
+      <h3 style="color:var(--white);">LLM Data Exfiltration</h3>
+      <p style="color:var(--gray-light);">When employees submit internal documents, customer data, source code, or financial information to cloud-hosted LLMs (ChatGPT, Gemini, Claude), that data leaves your network perimeter. On free or unmanaged tiers, provider terms of service may allow use of those inputs for model improvement. There is no retrieval. No notification. No audit log. The data is simply gone. <strong style="color:var(--white);">The fix:</strong> Sanctioned enterprise AI agreements with DLP controls and data residency guarantees.</p>
+    </div>
+
+    <div class="threat-card" style="background:var(--navy-card);border-color:var(--navy-border);">
+      <span class="risk-badge risk-critical">Critical</span>
+      <div class="threat-num">02</div>
+      <h3 style="color:var(--white);">Prompt Injection via Employee Tools</h3>
+      <p style="color:var(--gray-light);">Adversaries embed malicious instructions into documents, emails, or web content that AI tools are likely to process. When your employee's AI assistant reads a weaponized PDF, the injected prompt can redirect the AI to exfiltrate data, take unauthorized actions, or pass false information upstream. This attack vector has no user-facing warning. <strong style="color:var(--white);">The fix:</strong> AI-specific input validation, sandboxing LLM-connected workflows, and security training that covers AI-specific social engineering.</p>
+    </div>
+
+    <div class="threat-card" style="background:var(--navy-card);border-color:var(--navy-border);">
+      <span class="risk-badge risk-high">High</span>
+      <div class="threat-num">03</div>
+      <h3 style="color:var(--white);">Agentic AI Insider Threat</h3>
+      <p style="color:var(--gray-light);">Modern AI agents don't just respond — they act. They browse the web, execute code, write files, call APIs, and interact with external systems. An employee deploying an autonomous AI agent against internal systems — even with good intentions — can inadvertently trigger mass data access, lateral movement, or system changes that look indistinguishable from an insider threat. <strong style="color:var(--white);">The fix:</strong> Agentic AI governance policy, least-privilege access for AI systems, and behavioral monitoring of AI-initiated activity.</p>
+    </div>
+
+    <div class="threat-card" style="background:var(--navy-card);border-color:var(--navy-border);">
+      <span class="risk-badge risk-critical">Critical</span>
+      <div class="threat-num">04</div>
+      <h3 style="color:var(--white);">Deepfake Social Engineering</h3>
+      <p style="color:var(--gray-light);">AI-generated voice and video deepfakes are being used to impersonate executives, employees, and vendors in real-time video calls and voice messages. In 2024, a Hong Kong finance employee wired $25M after a deepfake video call impersonated the CFO. Help desks are being socially engineered via AI-cloned voices. MFA reset attacks now use synthetic audio. <strong style="color:var(--white);">The fix:</strong> Out-of-band verification protocols, biometric liveness detection, executive deepfake awareness training.</p>
+    </div>
+
+    <div class="threat-card" style="background:var(--navy-card);border-color:var(--navy-border);grid-column:1/-1;">
+      <span class="risk-badge risk-critical">Critical</span>
+      <div class="threat-num">05</div>
+      <h3 style="color:var(--white);">AI Supply Chain Poisoning</h3>
+      <p style="color:var(--gray-light);">Your developers are downloading open-source AI models, fine-tuned LLMs, and AI libraries — often without security review. Adversaries are actively poisoning public model repositories (Hugging Face, GitHub) with backdoored models that execute malicious code on load, exfiltrate data during inference, or produce subtly biased/incorrect outputs designed to manipulate downstream decisions. The attack surface is invisible until deployment. <strong style="color:var(--white);">The fix:</strong> AI model vetting and provenance verification, software composition analysis extended to AI components, internal model registries with security-approved models only.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ PAGE 4: AUDIT CHECKLIST ═══════════════════════════════ -->
+<div class="page content-page">
+  <div class="page-header">
+    <span class="page-header-brand">Outpost Gray — Shadow AI Executive Survival Guide</span>
+    <span class="page-header-chapter">Chapter 3: The Audit Checklist</span>
+  </div>
+
+  <span class="chapter-label">Chapter 3</span>
+  <h1 class="chapter-title">The 10-Point Shadow AI Audit Checklist</h1>
+  <p class="chapter-intro">Use this checklist to assess your organization's current Shadow AI exposure. An honest assessment is the first step to building an effective defense. Check each item your organization has fully implemented — not partially, not planned.</p>
+
+  <div class="checklist-grid">
+
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="checklist-item-content">
+        <h4>1. AI Inventory Completed</h4>
+        <p>You have a documented inventory of all AI tools in use across the organization — including department-level and individual employee usage — updated within the last 90 days.</p>
+      </div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="checklist-item-content">
+        <h4>2. AI Acceptable Use Policy Published</h4>
+        <p>A written AI Acceptable Use Policy exists, has been communicated to all employees, and is available in your policy management system. Employees have acknowledged it in writing.</p>
+      </div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="checklist-item-content">
+        <h4>3. Data Loss Prevention (DLP) Covers AI</h4>
+        <p>Your DLP controls are configured to monitor and restrict sensitive data transmission to AI endpoints (ChatGPT, Claude, Gemini, etc.) — including browser-based submissions.</p>
+      </div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="checklist-item-content">
+        <h4>4. Sanctioned AI Program in Place</h4>
+        <p>Your organization offers at least one formally approved, enterprise-grade AI tool with appropriate data processing agreements, so employees have a legitimate AI option within policy.</p>
+      </div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="checklist-item-content">
+        <h4>5. Third-Party AI Vendor Review</h4>
+        <p>All SaaS vendors and software tools in use have been reviewed for embedded AI features, training data clauses, and data residency commitments. AI-related contract language has been assessed by legal and security.</p>
+      </div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="checklist-item-content">
+        <h4>6. AI Security Training Delivered</h4>
+        <p>Security awareness training covers AI-specific risks: prompt injection, deepfake social engineering, data exfiltration via LLMs, and policy compliance. Training is refreshed at least annually.</p>
+      </div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="checklist-item-content">
+        <h4>7. Agentic AI Controls Defined</h4>
+        <p>You have defined access controls and governance requirements for autonomous AI agents — including least-privilege access, human-in-the-loop requirements for high-risk actions, and logging of AI-initiated activities.</p>
+      </div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="checklist-item-content">
+        <h4>8. AI Incident Response Playbook</h4>
+        <p>Your incident response plan addresses AI-specific scenarios: LLM data breach, deepfake-driven fraud, AI supply chain compromise, and agentic AI unauthorized access. Tabletop exercises have been conducted.</p>
+      </div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="checklist-item-content">
+        <h4>9. AI Governance Framework Aligned</h4>
+        <p>Your AI governance program is aligned to a recognized framework — NIST AI RMF, ISO 42001, or equivalent — with documented roles, risk assessment processes, and accountability at the leadership level.</p>
+      </div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="check-box"></div>
+      <div class="checklist-item-content">
+        <h4>10. Executive &amp; Board Briefed on AI Risk</h4>
+        <p>Your board of directors and executive leadership have received a formal AI risk briefing within the last 12 months — covering threat landscape, organizational exposure, and strategic AI security priorities.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="callout callout-gold" style="margin-top:1.25rem;">
+    <strong>Scoring:</strong> 8–10 checked = Strong foundation (continue building). 5–7 = Moderate risk (prioritize gaps). Below 5 = Significant exposure — action needed now. <strong>Scored fewer than 5?</strong> You need an outside AI security assessment. That's exactly what Outpost Gray does.
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ PAGE 5: AI AUP ═══════════════════════════════ -->
+<div class="page content-page">
+  <div class="page-header">
+    <span class="page-header-brand">Outpost Gray — Shadow AI Executive Survival Guide</span>
+    <span class="page-header-chapter">Chapter 4: Building Your AI AUP</span>
+  </div>
+
+  <span class="chapter-label">Chapter 4</span>
+  <h1 class="chapter-title">How to Build an AI Acceptable Use Policy</h1>
+
+  <p class="chapter-intro">An AI Acceptable Use Policy (AI AUP) is your organization's foundational governance document for artificial intelligence. It defines what AI tools employees may use, under what conditions, with what data, and what happens when the policy is violated. Without one, you have no baseline — and no defensible position if something goes wrong.</p>
+
+  <div class="two-col">
+    <div>
+      <h2 class="section-h">Essential Components</h2>
+      <ul style="font-size:0.86rem;color:#3a4a6a;line-height:1.9;padding-left:1.2rem;">
+        <li><strong>Scope</strong> — Who and what systems the policy covers</li>
+        <li><strong>Approved AI Tools</strong> — Sanctioned tools list with usage conditions</li>
+        <li><strong>Prohibited Uses</strong> — Explicit prohibitions with examples</li>
+        <li><strong>Data Classification Rules</strong> — What data may/may not enter AI systems</li>
+        <li><strong>Accountability</strong> — Who owns AI governance decisions</li>
+        <li><strong>Monitoring &amp; Enforcement</strong> — How compliance is verified</li>
+        <li><strong>Exception Process</strong> — How employees request new AI tools</li>
+        <li><strong>Violation Consequences</strong> — Clear disciplinary language</li>
+        <li><strong>Review Cadence</strong> — At minimum, annual policy review</li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="section-h">Common Policy Mistakes</h2>
+      <div class="callout callout-red" style="margin-top:0;">
+        <strong>Mistake #1:</strong> Banning all AI — employees will use it anyway, now without guardrails or visibility.
+      </div>
+      <div class="callout callout-red" style="margin-top:0.75rem;">
+        <strong>Mistake #2:</strong> Vague language — "use AI responsibly" is unenforceable. Policies must be specific.
+      </div>
+      <div class="callout callout-red" style="margin-top:0.75rem;">
+        <strong>Mistake #3:</strong> No data classification tie-in — without specifying what data cannot enter AI tools, employees have no practical guidance.
+      </div>
+    </div>
+  </div>
+
+  <hr class="rule" />
+
+  <h2 class="section-h">AI AUP Template Language</h2>
+
+  <div class="policy-section">
+    <h3>Purpose &amp; Scope</h3>
+    <div class="policy-template">
+This AI Acceptable Use Policy ("Policy") governs the use of artificial intelligence tools, models, and applications by all employees, contractors, and authorized third parties of <span class="placeholder">[Organization Name]</span> ("the Organization"). This Policy applies to AI tools used in the course of employment, whether accessed through organization-provided systems or personal devices used for work purposes.
+    </div>
+  </div>
+
+  <div class="policy-section">
+    <h3>Approved AI Tools</h3>
+    <div class="policy-template">
+Employees may only use AI tools that appear on the Organization's Approved AI Tools List, maintained by the <span class="placeholder">[IT/Security Team]</span>. Use of AI tools not on this list is prohibited without prior written approval from <span class="placeholder">[Designated Approver]</span>. The Approved AI Tools List is reviewed quarterly and is available at <span class="placeholder">[internal URL]</span>.
+    </div>
+  </div>
+
+  <div class="policy-section">
+    <h3>Data Classification Restrictions</h3>
+    <div class="policy-template">
+The following data classifications may NOT be entered into any AI system, including approved tools, without explicit written authorization:
+  • Confidential / Restricted data (as defined in the Data Classification Policy)
+  • Personally Identifiable Information (PII) of customers, employees, or partners
+  • Protected Health Information (PHI) subject to HIPAA
+  • Payment card data subject to PCI DSS
+  • Non-public financial data
+  • Proprietary source code, algorithms, or trade secrets
+  • Information subject to attorney-client privilege
+    </div>
+  </div>
+
+  <div class="callout callout-blue" style="margin-top:0.75rem;">
+    <strong>Important:</strong> This template is a starting point, not a finished policy. AI governance requirements vary significantly by industry, regulatory environment, and organizational context. Outpost Gray recommends working with an AI security expert to build a policy tailored to your specific risk profile and compliance obligations.
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ PAGE 6: WHEN TO CALL FOR HELP + BACK COVER ═══════════════════════════════ -->
+<div class="page back-cover">
+  <div class="back-cover-main">
+    <span class="back-cover-badge">Ready to Take Action?</span>
+    <h2>When You Need<br />Outside Help</h2>
+    <p>
+      Building an AI security program is achievable — but it requires expertise that most internal teams don't yet have. 
+      These are the signals it's time to bring in a specialist.
+    </p>
+
+    <!-- Warning signals grid -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;width:100%;max-width:680px;text-align:left;margin-bottom:2rem;">
+      <div style="background:rgba(255,255,255,0.04);border:1px solid var(--navy-border);border-radius:10px;padding:1rem 1.25rem;">
+        <div style="color:var(--gold);font-size:1.3rem;margin-bottom:0.4rem;">⚠️</div>
+        <p style="font-size:0.82rem;color:var(--gray-light);line-height:1.7;">You scored below 5 on the Shadow AI Audit Checklist in Chapter 3.</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.04);border:1px solid var(--navy-border);border-radius:10px;padding:1rem 1.25rem;">
+        <div style="color:var(--gold);font-size:1.3rem;margin-bottom:0.4rem;">⚠️</div>
+        <p style="font-size:0.82rem;color:var(--gray-light);line-height:1.7;">Your team is building or deploying LLM-based applications without a security review process.</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.04);border:1px solid var(--navy-border);border-radius:10px;padding:1rem 1.25rem;">
+        <div style="color:var(--gold);font-size:1.3rem;margin-bottom:0.4rem;">⚠️</div>
+        <p style="font-size:0.82rem;color:var(--gray-light);line-height:1.7;">A regulator, auditor, or enterprise customer has asked about your AI governance posture — and you don't have a clear answer.</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.04);border:1px solid var(--navy-border);border-radius:10px;padding:1rem 1.25rem;">
+        <div style="color:var(--gold);font-size:1.3rem;margin-bottom:0.4rem;">⚠️</div>
+        <p style="font-size:0.82rem;color:var(--gray-light);line-height:1.7;">Your security team is experienced in traditional cyber but hasn't worked with AI/ML-specific threat models or governance frameworks.</p>
+      </div>
+    </div>
+
+    <a href="https://outpostgray.com/#quote-form" class="back-cta-btn">Schedule a Free Discovery Call →</a>
+
+    <div class="back-cover-services">
+      <span class="back-service-tag">Shadow AI Detection</span>
+      <span class="back-service-tag">LLM Red Teaming</span>
+      <span class="back-service-tag">AI Governance &amp; Policy</span>
+      <span class="back-service-tag">vCISO Services</span>
+      <span class="back-service-tag">Deepfake Defense</span>
+      <span class="back-service-tag">AI Security Training</span>
+    </div>
+  </div>
+
+  <div class="back-cover-footer">
+    <div class="back-cover-contact">
+      <p>Questions? Ready to talk? Reach out directly.</p>
+      <p>Email: <a href="mailto:jax@outpostgray.com">jax@outpostgray.com</a></p>
+      <p>Web: <a href="https://outpostgray.com" style="color:var(--blue);">outpostgray.com</a></p>
+      <p style="margin-top:0.5rem;font-size:0.72rem;color:var(--gray);">© 2026 Outpost Gray. All rights reserved. This document is for informational purposes only.</p>
+    </div>
+    <div class="back-cover-logo">
+      OUTPOST<span>GRAY</span>
+      <small>AI Security &amp; Cybersecurity</small>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
