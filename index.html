@@ -6,7 +6,7 @@
 
   <!-- ── SEO: Core ── -->
   <title>Outpost Gray | AI Security Consulting &amp; Cybersecurity Advisory</title>
-  <meta name="description" content="Outpost Gray is an AI security consulting firm led by Jax Scott — one of the top women in AI and cybersecurity. We help organizations secure AI deployments, detect Shadow AI, and build real cyber resilience." />
+  <meta name="description" content="Outpost Gray is an AI security consulting firm led by Jax Scott, one of the top women in AI and cybersecurity. We help organizations secure AI deployments, detect Shadow AI, and build real cyber resilience." />
   <meta name="keywords" content="AI security consulting, AI governance, Shadow AI detection, LLM red teaming, vCISO services, deepfake defense, AI risk assessment, prompt injection, agentic AI threats, cybersecurity advisory, AI compliance, NIST AI RMF, AI acceptable use policy, AI penetration testing, AI security training, women in cybersecurity, female cybersecurity expert, women in AI, AI women leader, cybersecurity women, boss cybersecurity lady, Jax Scott, Outpost Gray, AI security firm led by woman, female CISO, women cybersecurity consulting" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://outpostgray.com" />
@@ -211,9 +211,6 @@
       background: rgba(10,22,40,0.92);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--navy-border);
-      height: 70px;
-      display: flex;
-      align-items: center;
     }
 
     .nav-inner {
@@ -223,7 +220,7 @@
       width: 100%;
       max-width: 1120px;
       margin: 0 auto;
-      padding: 0 5%;
+      padding: 18px 5%;
     }
 
     .logo {
@@ -233,6 +230,7 @@
       letter-spacing: 0.04em;
       color: var(--white);
       text-decoration: none;
+      flex-shrink: 0;
     }
     .logo span { color: var(--gold); }
     .logo sub {
@@ -257,9 +255,51 @@
       font-size: 0.88rem;
       font-weight: 500;
       transition: color 0.2s;
+      white-space: nowrap;
     }
     .nav-links a:hover { color: var(--white); }
     .nav-links .nav-cta { padding: 0.45rem 1.15rem; border-radius: 6px; }
+
+    /* HAMBURGER */
+    .nav-hamburger {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 4px 8px;
+      line-height: 1;
+    }
+
+    .nav-mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: rgba(10,22,40,0.98);
+      border-top: 1px solid var(--navy-border);
+      padding: 16px 5% 20px;
+      gap: 0;
+    }
+    .nav-mobile-menu.open { display: flex; }
+    .nav-mobile-menu li { list-style: none; }
+    .nav-mobile-menu li a {
+      display: block;
+      color: var(--gray-light);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--navy-border);
+      transition: color 0.2s;
+    }
+    .nav-mobile-menu li:last-child a { border-bottom: none; margin-top: 8px; }
+    .nav-mobile-menu li a:hover { color: var(--white); }
+
+    @media (max-width: 768px) {
+      .nav-inner { padding: 18px 20px; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: block; }
+    }
 
     /* ── HERO ── */
     .hero {
@@ -1085,13 +1125,17 @@
       .container { padding: 0 1.25rem; }
       .services-grid,
       .pricing-grid  { grid-template-columns: 1fr; }
-      nav { padding: 0; }
       .nav-links      { display: none; }
       .hero-stats     { gap: 2rem; }
       .contact-cta-box { padding: 2.5rem 1.5rem; }
       .footer-inner   { flex-direction: column; text-align: center; }
       .form-row       { grid-template-columns: 1fr; }
       .quote-form-box { padding: 1.75rem 1.25rem; }
+      .hero-btns { flex-direction: column; }
+      .hero-btns .btn { text-align: center; }
+      .contact-btns { flex-direction: column; align-items: stretch; }
+      .contact-btns .btn { text-align: center; }
+      .services-intro { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
@@ -1111,7 +1155,15 @@
       <li><a href="#about">About</a></li>
       <li><a href="#quote-form" class="btn btn-primary nav-cta">Get a Quote</a></li>
     </ul>
+    <button class="nav-hamburger" aria-label="Toggle menu" onclick="toggleNav()">&#9776;</button>
   </div>
+  <ul class="nav-mobile-menu" id="navMobile">
+    <li><a href="#services" onclick="closeNav()">Services</a></li>
+    <li><a href="#assessments" onclick="closeNav()">Assessments</a></li>
+    <li><a href="#work-with-us" onclick="closeNav()">Pricing</a></li>
+    <li><a href="#about" onclick="closeNav()">About</a></li>
+    <li><a href="#quote-form" class="btn btn-primary" style="display:block;text-align:center;" onclick="closeNav()">Get a Quote</a></li>
+  </ul>
 </nav>
 
 <!-- ── HERO ── -->
@@ -1122,10 +1174,10 @@
     <div class="hero-inner">
       <div class="hero-badges">
         <span class="tag tag-blue">AI Security</span>
-        <span class="tag tag-gold">$31B Market — Growing Fast</span>
+        <span class="tag tag-gold">$31B Market: Growing Fast</span>
       </div>
       <h1>Where <span class="accent">AI</span> Meets<br /><span class="accent-gold">Security.</span></h1>
-      <p class="hero-sub">The AI security market hits <strong>$31 billion in 2025</strong> — and most organizations are dangerously unprepared. Shadow AI, LLM red teaming, agentic AI threats, prompt injection: these aren't hypothetical risks. They're happening now. Outpost Gray helps you get ahead of them.</p>
+      <p class="hero-sub">The AI security market hits <strong>$31 billion in 2025</strong>, and most organizations are dangerously unprepared. Shadow AI, LLM red teaming, agentic AI threats, prompt injection: these aren't hypothetical risks. They're happening now. Outpost Gray helps you get ahead of them.</p>
       <div class="hero-btns">
         <a href="mailto:jax@outpostgray.com" class="btn btn-primary">Work With Us</a>
         <a href="#services" class="btn btn-outline">Our Services ↓</a>
@@ -1183,9 +1235,9 @@
       <div class="problem-text">
         <span class="section-label">The New Threat Landscape</span>
         <h2 class="section-title">Your Employees Are Already<br />Using AI. Is Your Security Ready?</h2>
-        <p>Organizations are deploying AI at unprecedented speed — but security strategy hasn't kept pace. <strong>Shadow AI</strong> is everywhere: employees using unauthorized tools, sharing sensitive data with ChatGPT, and bypassing every policy you thought you had.</p>
+        <p>Organizations are deploying AI at unprecedented speed, but security strategy hasn't kept pace. <strong>Shadow AI</strong> is everywhere: employees using unauthorized tools, sharing sensitive data with ChatGPT, and bypassing every policy you thought you had.</p>
         <p>Meanwhile, threat actors are weaponizing the same AI tools against you. AI-enhanced phishing. Autonomous attack agents. <strong>Agentic AI threats</strong> that operate without human oversight. LLMs manipulated through prompt injection to exfiltrate data. This is the new normal.</p>
-        <p>Traditional cybersecurity frameworks weren't built for this. Your compliance checklist won't save you. You need AI-specific expertise — and a partner who understands both the technology and the threat.</p>
+        <p>Traditional cybersecurity frameworks weren't built for this. Your compliance checklist won't save you. You need AI-specific expertise, and a partner who understands both the technology and the threat.</p>
         <div class="callout-box">
           <p><strong>Outpost Gray bridges the gap.</strong> Military-grade strategic discipline meets cutting-edge AI security expertise. We help organizations understand, assess, and defend against AI-era threats before they become breaches.</p>
         </div>
@@ -1193,7 +1245,7 @@
       <div class="problem-stats">
         <div class="stat-card">
           <span class="big-num">$31B</span>
-          <p>Global AI security market in 2025 — projected to hit $86B by 2030. The opportunity (and risk) is massive.</p>
+          <p>Global AI security market in 2025, projected to hit $86B by 2030. The opportunity (and risk) is massive.</p>
         </div>
         <div class="stat-card">
           <span class="big-num">77%</span>
@@ -1201,7 +1253,7 @@
         </div>
         <div class="stat-card">
           <span class="big-num">$4.88M</span>
-          <p>Average cost of a data breach in 2024 — a record high, and AI-assisted attacks are accelerating the pace.</p>
+          <p>Average cost of a data breach in 2024: a record high, and AI-assisted attacks are accelerating the pace.</p>
         </div>
       </div>
     </div>
@@ -1224,7 +1276,7 @@
         <span class="featured-badge">Most In-Demand</span>
         <span class="service-icon">🏛️</span>
         <h3>AI Governance &amp; Policy</h3>
-        <p>Navigate ISO 42001, NIST AI RMF, and the EU AI Act before the compliance wave hits your organization. We build defensible AI governance frameworks, acceptable use policies, and audit-ready documentation. Don't wait for the mandate — lead it.</p>
+        <p>Navigate ISO 42001, NIST AI RMF, and the EU AI Act before the compliance wave hits your organization. We build defensible AI governance frameworks, acceptable use policies, and audit-ready documentation. Don't wait for the mandate, lead it.</p>
         <a href="mailto:jax@outpostgray.com" class="service-link">Get your AI governance strategy →</a>
       </div>
 
@@ -1245,14 +1297,14 @@
       <div class="service-card">
         <span class="service-icon">⚖️</span>
         <h3>vCISO Services</h3>
-        <p>Get Jax's expertise as your virtual CISO — without the full-time price tag. AI-enhanced risk assessments, continuous compliance monitoring, board reporting, and incident response support. Ideal for mid-market organizations that need senior security leadership now.</p>
+        <p>Get Jax's expertise as your virtual CISO, without the full-time price tag. AI-enhanced risk assessments, continuous compliance monitoring, board reporting, and incident response support. Ideal for mid-market organizations that need senior security leadership now.</p>
         <a href="mailto:jax@outpostgray.com" class="service-link">Explore vCISO options →</a>
       </div>
 
       <div class="service-card">
         <span class="service-icon">🎓</span>
         <h3>AI Security Training</h3>
-        <p>77% of organizations are unprepared for AI threats — and the biggest vulnerability is your people. Executive briefings, board-level AI risk workshops, and workforce awareness training that translates complex AI security concepts into clear, actionable understanding at every level.</p>
+        <p>77% of organizations are unprepared for AI threats, and the biggest vulnerability is your people. Executive briefings, board-level AI risk workshops, and workforce awareness training that translates complex AI security concepts into clear, actionable understanding at every level.</p>
         <a href="mailto:jax@outpostgray.com" class="service-link">Book a training session →</a>
       </div>
 
@@ -1274,7 +1326,7 @@
       <div class="lead-magnet-text">
         <span class="section-label">Free Executive Guide</span>
         <h2 class="section-title">Is Shadow AI Already<br />Inside Your Organization?</h2>
-        <p class="section-sub">Most organizations discover Shadow AI the hard way — during a breach. Download our free executive guide and learn the 5 Shadow AI threats your board needs to know, a 10-point audit checklist, and how to build an AI Acceptable Use Policy that actually works.</p>
+        <p class="section-sub">Most organizations discover Shadow AI the hard way, during a breach. Download our free executive guide and learn the 5 Shadow AI threats your board needs to know, a 10-point audit checklist, and how to build an AI Acceptable Use Policy that actually works.</p>
         <ul class="lead-benefits">
           <li><span class="check">✓</span> 5 critical Shadow AI threats CISOs must know</li>
           <li><span class="check">✓</span> 10-Point Shadow AI Audit Checklist</li>
@@ -1286,7 +1338,7 @@
         <div class="lead-form-header">
           <span class="lead-form-icon">📥</span>
           <h3>Get the Free Guide</h3>
-          <p>Instant download — no fluff, real CISO-level intelligence.</p>
+          <p>Instant download: no fluff, real CISO-level intelligence.</p>
         </div>
         <form class="validate" action="https://outpostgray.us14.list-manage.com/subscribe/post?u=01c2b078c7fc9c8b7b540856c&amp;id=1d2b5ea4d6&amp;f_id=002691e1f0" method="post" target="_blank">
           <input type="email" name="EMAIL" placeholder="Work Email Address" required class="lead-input" />
@@ -1305,7 +1357,7 @@
   <div class="container">
     <span class="section-label">Assessment Services</span>
     <h2 class="section-title">Know Exactly Where You Stand</h2>
-    <p class="section-sub">You can't secure what you don't understand. Our structured AI security assessments give you an honest picture of your risk exposure — with a prioritized, actionable roadmap to fix it.</p>
+    <p class="section-sub">You can't secure what you don't understand. Our structured AI security assessments give you an honest picture of your risk exposure, with a prioritized, actionable roadmap to fix it.</p>
     <div class="assess-grid">
 
       <div class="assess-card">
@@ -1328,7 +1380,7 @@
         <span class="assess-num">03</span>
         <div class="assess-content">
           <h3>AI Governance Readiness Assessment</h3>
-          <p>Are you ready for AI regulation? We benchmark your current AI programs against ISO 42001, NIST AI RMF, EU AI Act, and sector-specific requirements. Identify compliance gaps before they become audit findings — or headlines.</p>
+          <p>Are you ready for AI regulation? We benchmark your current AI programs against ISO 42001, NIST AI RMF, EU AI Act, and sector-specific requirements. Identify compliance gaps before they become audit findings, or headlines.</p>
         </div>
       </div>
 
@@ -1353,7 +1405,7 @@
     <div class="pricing-intro">
       <span class="section-label">Work With Us</span>
       <h2 class="section-title">Engagement Options</h2>
-      <p class="section-sub">Whether you need a targeted AI security assessment, a fractional vCISO, or a full AI governance program build — we have an engagement model to match your scope and budget.</p>
+      <p class="section-sub">Whether you need a targeted AI security assessment, a fractional vCISO, or a full AI governance program build: we have an engagement model to match your scope and budget.</p>
     </div>
     <div class="pricing-grid">
 
@@ -1375,9 +1427,9 @@
       <div class="pricing-card popular">
         <span class="popular-badge">Most Popular</span>
         <h3>vCISO Retainer</h3>
-        <p class="pricing-desc">Ongoing AI security leadership and strategic counsel — your embedded expert without the full-time hire. Retainer-based, scoped to your needs.</p>
+        <p class="pricing-desc">Ongoing AI security leadership and strategic counsel, your embedded expert without the full-time hire. Retainer-based, scoped to your needs.</p>
         <div class="price">Custom</div>
-        <div class="price-note">monthly retainer — scoped to your org</div>
+        <div class="price-note">monthly retainer, scoped to your org</div>
         <ul class="pricing-features">
           <li><span class="check">✓</span> Monthly advisory hours</li>
           <li><span class="check">✓</span> AI risk &amp; governance oversight</li>
@@ -1390,9 +1442,9 @@
 
       <div class="pricing-card">
         <h3>AI Security Program Build</h3>
-        <p class="pricing-desc">Full-scope engagement to build your AI security program from the ground up — governance, policies, training, and ongoing measurement.</p>
+        <p class="pricing-desc">Full-scope engagement to build your AI security program from the ground up, governance, policies, training, and ongoing measurement.</p>
         <div class="price">Custom</div>
-        <div class="price-note">project-based — contact us</div>
+        <div class="price-note">project-based, contact us</div>
         <ul class="pricing-features">
           <li><span class="check">✓</span> Shadow AI detection &amp; policy</li>
           <li><span class="check">✓</span> AI governance framework</li>
@@ -1418,17 +1470,17 @@
           <span class="tag tag-blue">19+ Yrs Cyber</span>
           <span class="tag tag-gold">Special Forces Veteran</span>
         </div>
-        <p>Outpost Gray was founded by <strong>Jaclyn "Jax" Scott</strong> — a globally recognized AI security and cybersecurity leader with over 19 years of experience spanning U.S. Army Special Operations and the private sector.</p>
-        <p>Jax spent over a decade as a <strong>Cyber Electronic Warfare Warrant Officer</strong> in the Special Forces community, leading teams in some of the most demanding threat environments on earth. That background — where operational failure isn't an option — shapes everything Outpost Gray delivers.</p>
+        <p>Outpost Gray was founded by <strong>Jaclyn "Jax" Scott</strong>, a globally recognized AI security and cybersecurity leader with over 19 years of experience spanning U.S. Army Special Operations and the private sector.</p>
+        <p>Jax spent over a decade as a <strong>Cyber Electronic Warfare Warrant Officer</strong> in the Special Forces community, leading teams in some of the most demanding threat environments on earth. That background, where operational failure isn't an option, shapes everything Outpost Gray delivers.</p>
         <p>Since transitioning to the private sector, Jax has built and scaled security programs for federal agencies and top commercial organizations, spoken at RSA Conference 2024, and emerged as a sought-after voice at the intersection of <strong>AI security, governance, and strategic leadership</strong>.</p>
-        <p>Outpost Gray exists on her belief that the organizations most at risk from AI-era threats are those moving too fast to stop and ask the right questions. We ask them for you — and help you act on the answers.</p>
+        <p>Outpost Gray exists on her belief that the organizations most at risk from AI-era threats are those moving too fast to stop and ask the right questions. We ask them for you, and help you act on the answers.</p>
       </div>
       <div class="founder-card">
         <div class="founder-name">Jaclyn "Jax" Scott</div>
         <div class="founder-title">Founder &amp; President, Outpost Gray</div>
         <ul class="founder-creds">
           <li><span class="cred-dot"></span>Cyber Electronic Warfare Warrant Officer, U.S. Army Special Forces (10+ years)</li>
-          <li><span class="cred-dot"></span>19+ years cybersecurity — federal &amp; commercial sectors</li>
+          <li><span class="cred-dot"></span>19+ years cybersecurity: federal &amp; commercial sectors</li>
           <li><span class="cred-dot"></span>RSA Conference 2024 Speaker</li>
           <li><span class="cred-dot"></span>AI security strategist &amp; governance expert</li>
           <li><span class="cred-dot"></span>Author, blogger, and cyber thought leader</li>
@@ -1445,7 +1497,7 @@
     <div class="email-list-inner">
       <span class="section-label">Intel Briefing</span>
       <h2>Stay Ahead of AI Security Threats</h2>
-      <p>Join our intel briefing list — strategic insights on Shadow AI, LLM vulnerabilities, AI governance mandates, and emerging threats. No fluff. No spam. Just signal.</p>
+      <p>Join our intel briefing list: strategic insights on Shadow AI, LLM vulnerabilities, AI governance mandates, and emerging threats. No fluff. No spam. Just signal.</p>
       <form class="email-form validate" action="https://outpostgray.us14.list-manage.com/subscribe/post?u=01c2b078c7fc9c8b7b540856c&amp;id=1d2b5ea4d6&amp;f_id=002691e1f0" method="post" target="_blank">
         <input type="email" name="EMAIL" placeholder="Work Email Address" required />
         <div aria-hidden="true" style="position:absolute;left:-5000px;"><input type="text" name="b_01c2b078c7fc9c8b7b540856c_1d2b5ea4d6" tabindex="-1" value=""></div>
@@ -1460,8 +1512,8 @@
 <section class="contact-cta">
   <div class="container">
     <div class="contact-cta-box">
-      <h2>The Question Isn't <em>If</em>.<br />It's <em>When</em> — and <em>How Ready</em> You Are.</h2>
-      <p>AI threats are moving faster than your security strategy. Let's close that gap — before someone else does.</p>
+      <h2>The Question Isn't <em>If</em>.<br />It's <em>When</em>, and <em>How Ready</em> You Are.</h2>
+      <p>AI threats are moving faster than your security strategy. Let's close that gap before someone else does.</p>
       <div class="contact-btns">
         <a href="mailto:jax@outpostgray.com" class="btn btn-primary">Schedule a Discovery Call</a>
         <a href="#work-with-us" class="btn btn-outline">View Engagement Options</a>
@@ -1479,7 +1531,7 @@
         <h2 class="section-title">Let's Talk About<br />Securing Your AI.</h2>
         <p class="section-sub">Tell us about your organization and biggest challenge. Jax reviews every submission personally. You'll hear back within 1 business day.</p>
         <div class="quote-trust-items">
-          <div class="quote-trust-item"><span class="check">✓</span> No pressure — just a conversation</div>
+          <div class="quote-trust-item"><span class="check">✓</span> No pressure, just a conversation</div>
           <div class="quote-trust-item"><span class="check">✓</span> Jax responds personally</div>
           <div class="quote-trust-item"><span class="check">✓</span> Confidential &amp; NDA-friendly</div>
           <div class="quote-trust-item"><span class="check">✓</span> Response within 1 business day</div>
@@ -1558,6 +1610,15 @@
     <div class="footer-link"><a href="mailto:jax@outpostgray.com">jax@outpostgray.com</a></div>
   </div>
 </footer>
+
+<script>
+  function toggleNav() {
+    document.getElementById('navMobile').classList.toggle('open');
+  }
+  function closeNav() {
+    document.getElementById('navMobile').classList.remove('open');
+  }
+</script>
 
 <!-- ── LLM/AI Entity Context (machine-readable, visually hidden) ── -->
 <div style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;" aria-hidden="true">
