@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Insights Blog | Outpost Gray</title>
+  <meta name="description" content="AI security insights, cybersecurity intelligence, and practical guidance from Jax Scott and the Outpost Gray team. Real intelligence on AI threats, governance, and what security teams need to know." />
+  <meta name="keywords" content="AI security blog, cybersecurity AI insights, AI governance blog, Outpost Gray blog, Jax Scott blog, Shadow AI, agentic AI security" />
+  <link rel="canonical" href="https://outpostgray.com/blog/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://outpostgray.com/blog/" />
+  <meta property="og:title" content="AI Insights Blog | Outpost Gray" />
+  <meta property="og:description" content="Real intelligence on AI threats, governance, and what security teams need to know." />
+  <meta property="og:site_name" content="Outpost Gray" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@the_Zaraai" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --navy: #0A1628; --navy-mid: #0d1e38; --navy-card: #0f2240; --navy-border: #1a3260; --gray: #5a6882; --gray-light: #8a9db8; --white: #E8EDF5; --blue: #0066FF; --blue-dim: #0052cc; --gold: #D4A017; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--navy); color: var(--white); line-height: 1.65; }
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 5%; }
+    nav { background: rgba(10,22,40,0.95); border-bottom: 1px solid var(--navy-border); padding: 18px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(16px); }
+    .logo { font-family: 'Space Grotesk', sans-serif; font-weight: 800; font-size: 1.2rem; letter-spacing: 0.04em; color: var(--white); text-decoration: none; }
+    .logo span { color: var(--gold); }
+    .nav-back { color: var(--gray-light); text-decoration: none; font-size: 0.88rem; }
+    .nav-back:hover { color: var(--white); }
+    .blog-listing-header { padding: 5rem 0 3rem; border-bottom: 1px solid var(--navy-border); }
+    .section-label { display: block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+    h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; line-height: 1.15; margin-bottom: 1rem; }
+    .intro-text { font-size: 1.08rem; color: var(--gray-light); line-height: 1.8; max-width: 600px; }
+    .posts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; padding: 4rem 0; }
+    @media (max-width: 960px) { .posts-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 640px) { .posts-grid { grid-template-columns: 1fr; } }
+    .post-card { background: var(--navy-card); border: 1px solid var(--navy-border); border-radius: 14px; padding: 2rem 1.75rem; display: flex; flex-direction: column; gap: 0.75rem; text-decoration: none; color: inherit; transition: all 0.25s; position: relative; overflow: hidden; }
+    .post-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--blue), var(--gold)); opacity: 0; transition: opacity 0.25s; }
+    .post-card:hover { border-color: rgba(0,102,255,0.35); transform: translateY(-5px); box-shadow: 0 16px 48px rgba(0,0,0,0.35); }
+    .post-card:hover::after { opacity: 1; }
+    .post-topic { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); }
+    .post-card h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--white); line-height: 1.4; flex: 1; }
+    .post-card p { font-size: 0.86rem; color: var(--gray-light); line-height: 1.7; }
+    .post-read { font-size: 0.8rem; font-weight: 600; color: var(--blue); display: flex; align-items: center; gap: 0.3rem; }
+    .post-card:hover .post-read { gap: 0.6rem; }
+    footer { background: var(--navy-mid); border-top: 1px solid var(--navy-border); padding: 2rem 5%; text-align: center; }
+    footer p { font-size: 0.82rem; color: var(--gray); }
+    footer a { color: var(--gold); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">OUTPOST<span>GRAY</span></a>
+  <a href="/" class="nav-back">← Back to Site</a>
+</nav>
+
+<div class="container">
+  <header class="blog-listing-header">
+    <span class="section-label">AI Insights</span>
+    <h1>From the Front Lines of AI Security</h1>
+    <p class="intro-text">Real intelligence on AI threats, governance, and what security teams need to know now. Written by practitioners, not pundits.</p>
+  </header>
+
+  <div class="posts-grid">
+
+    <a href="/blog/ai-in-cybersecurity-2026.html" class="post-card">
+      <span class="post-topic">AI Security</span>
+      <h2>AI in Cybersecurity: What Every Business Needs to Know in 2026</h2>
+      <p>AI is reshaping the threat landscape faster than most organizations can respond. From agentic AI threats to deepfake fraud, here's what actually matters for your security strategy in 2026.</p>
+      <span class="post-read">Read post →</span>
+    </a>
+
+    <a href="/blog/nist-csf-ai-risk.html" class="post-card">
+      <span class="post-topic">Frameworks &amp; Policy</span>
+      <h2>The NIST CSF and AI Risk: A Practical Guide for Security Teams</h2>
+      <p>The NIST Cybersecurity Framework wasn't designed with AI in mind — but here's how to apply it anyway. A practical guide for navigating AI risk with existing frameworks.</p>
+      <span class="post-read">Read post →</span>
+    </a>
+
+    <a href="/blog/zero-trust-ai-agents.html" class="post-card">
+      <span class="post-topic">Zero Trust</span>
+      <h2>Zero Trust + AI Agents: Why Your Security Perimeter Just Changed</h2>
+      <p>AI agents can take actions, access systems, and make decisions autonomously. That changes everything about Zero Trust architecture. Here's how to adapt.</p>
+      <span class="post-read">Read post →</span>
+    </a>
+
+  </div>
+</div>
+
+<footer>
+  <p><a href="/">Outpost Gray</a> · AI Security Consulting led by Jax Scott · <a href="mailto:jax@outpostgray.com">jax@outpostgray.com</a></p>
+</footer>
+
+</body>
+</html>
