@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>The NIST CSF and AI Risk: A Practical Guide for Security Teams | Outpost Gray</title>
+  <meta name="description" content="The NIST Cybersecurity Framework wasn't designed with AI in mind — but here's how to apply it anyway. A practical guide for security teams navigating AI risk with existing frameworks." />
+  <meta name="keywords" content="NIST CSF AI risk, NIST AI RMF, AI governance framework, AI cybersecurity framework, AI risk management, Outpost Gray, Jax Scott, AI security policy" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://outpostgray.com/blog/nist-csf-ai-risk.html" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://outpostgray.com/blog/nist-csf-ai-risk.html" />
+  <meta property="og:title" content="The NIST CSF and AI Risk: A Practical Guide for Security Teams" />
+  <meta property="og:description" content="The NIST Cybersecurity Framework wasn't designed with AI in mind — but here's how to apply it anyway. A practical guide for navigating AI risk." />
+  <meta property="og:site_name" content="Outpost Gray" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@the_Zaraai" />
+  <meta name="twitter:title" content="The NIST CSF and AI Risk: A Practical Guide for Security Teams" />
+  <meta name="twitter:description" content="The NIST Cybersecurity Framework wasn't designed with AI in mind — but here's how to apply it anyway." />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The NIST CSF and AI Risk: A Practical Guide for Security Teams",
+    "description": "The NIST Cybersecurity Framework wasn't designed with AI in mind — but here's how to apply it anyway. A practical guide for security teams navigating AI risk.",
+    "author": {
+      "@type": "Person",
+      "name": "Jax Scott",
+      "url": "https://iamjax.me",
+      "worksFor": { "@type": "Organization", "name": "Outpost Gray", "url": "https://outpostgray.com" }
+    },
+    "publisher": { "@type": "Organization", "name": "Outpost Gray", "url": "https://outpostgray.com" },
+    "datePublished": "2026-03-18",
+    "dateModified": "2026-03-18",
+    "url": "https://outpostgray.com/blog/nist-csf-ai-risk.html"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --navy: #0A1628; --navy-mid: #0d1e38; --navy-card: #0f2240; --navy-border: #1a3260; --gray: #5a6882; --gray-light: #8a9db8; --white: #E8EDF5; --blue: #0066FF; --blue-dim: #0052cc; --gold: #D4A017; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--navy); color: var(--white); line-height: 1.65; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 5%; }
+    nav { background: rgba(10,22,40,0.95); border-bottom: 1px solid var(--navy-border); padding: 18px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(16px); }
+    .logo { font-family: 'Space Grotesk', sans-serif; font-weight: 800; font-size: 1.2rem; letter-spacing: 0.04em; color: var(--white); text-decoration: none; }
+    .logo span { color: var(--gold); }
+    .nav-back { color: var(--gray-light); text-decoration: none; font-size: 0.88rem; }
+    .nav-back:hover { color: var(--white); }
+    .blog-header { padding: 5rem 0 3rem; border-bottom: 1px solid var(--navy-border); }
+    .blog-meta { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; align-items: center; }
+    .tag { display: inline-block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.28rem 0.85rem; border-radius: 100px; }
+    .tag-blue { color: var(--blue); border: 1px solid rgba(0,102,255,0.35); background: rgba(0,102,255,0.07); }
+    .tag-gold { color: var(--gold); border: 1px solid rgba(212,160,23,0.35); background: rgba(212,160,23,0.08); }
+    .blog-date { font-size: 0.8rem; color: var(--gray); }
+    .blog-author { font-size: 0.85rem; color: var(--gray-light); }
+    h1.blog-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 1rem; }
+    .blog-intro { font-size: 1.12rem; color: var(--gray-light); line-height: 1.8; margin-top: 1rem; }
+    .blog-body { padding: 3rem 0 4rem; }
+    .blog-body h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; margin: 2.5rem 0 1rem; color: var(--white); letter-spacing: -0.01em; }
+    .blog-body h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.15rem; font-weight: 700; margin: 2rem 0 0.75rem; color: var(--gold); }
+    .blog-body p { color: var(--gray-light); font-size: 1.02rem; line-height: 1.85; margin-bottom: 1.25rem; }
+    .blog-body p strong { color: var(--white); }
+    .blog-body ul { list-style: none; margin: 1rem 0 1.5rem; display: flex; flex-direction: column; gap: 0.6rem; }
+    .blog-body ul li { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.98rem; color: var(--gray-light); line-height: 1.7; }
+    .blog-body ul li::before { content: '→'; color: var(--gold); font-weight: 700; flex-shrink: 0; }
+    .callout { background: var(--navy-card); border: 1px solid var(--navy-border); border-left: 3px solid var(--gold); border-radius: 10px; padding: 1.5rem 1.75rem; margin: 2rem 0; }
+    .callout p { margin: 0 !important; font-style: italic; color: var(--gray-light); }
+    .callout strong { color: var(--white); font-style: normal; }
+    .framework-table { background: var(--navy-card); border: 1px solid var(--navy-border); border-radius: 12px; padding: 1.5rem; margin: 2rem 0; }
+    .framework-row { display: grid; grid-template-columns: 140px 1fr; gap: 1rem; padding: 0.75rem 0; border-bottom: 1px solid var(--navy-border); }
+    .framework-row:last-child { border-bottom: none; }
+    .framework-row .label { font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: var(--blue); font-size: 0.9rem; }
+    .framework-row .desc { font-size: 0.9rem; color: var(--gray-light); line-height: 1.6; }
+    .cta-box { background: linear-gradient(145deg, #0e1e36, #0f2240); border: 1px solid var(--navy-border); border-radius: 16px; padding: 2.5rem; text-align: center; margin: 3rem 0 0; position: relative; overflow: hidden; }
+    .cta-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), var(--gold)); }
+    .cta-box h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 800; margin-bottom: 0.75rem; }
+    .cta-box p { font-size: 1rem; color: var(--gray-light); margin-bottom: 1.5rem; }
+    .btn { display: inline-block; padding: 0.8rem 1.85rem; border-radius: 7px; font-weight: 700; font-size: 0.95rem; text-decoration: none; transition: all 0.2s; border: none; font-family: 'Inter', sans-serif; }
+    .btn-primary { background: var(--blue); color: #fff; }
+    .btn-primary:hover { background: var(--blue-dim); transform: translateY(-2px); }
+    .btn-outline { background: transparent; border: 1.5px solid var(--navy-border); color: var(--gray-light); margin-left: 0.75rem; }
+    .btn-outline:hover { border-color: var(--blue); color: var(--white); }
+    footer { background: var(--navy-mid); border-top: 1px solid var(--navy-border); padding: 2rem 5%; text-align: center; }
+    footer p { font-size: 0.82rem; color: var(--gray); }
+    footer a { color: var(--gold); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">OUTPOST<span>GRAY</span></a>
+  <a href="/blog/" class="nav-back">← All Posts</a>
+</nav>
+
+<div class="container">
+  <header class="blog-header">
+    <div class="blog-meta">
+      <span class="tag tag-blue">Frameworks &amp; Policy</span>
+      <span class="tag tag-gold">NIST</span>
+      <span class="blog-date">March 2026</span>
+      <span class="blog-author">By <strong>Jax Scott</strong> · Outpost Gray</span>
+    </div>
+    <h1 class="blog-title">The NIST CSF and AI Risk: A Practical Guide for Security Teams</h1>
+    <p class="blog-intro">The NIST Cybersecurity Framework wasn't designed with AI in mind — but here's how to apply it anyway. A practical guide for security teams who need to start managing AI risk today without waiting for the perfect framework to emerge.</p>
+  </header>
+
+  <article class="blog-body">
+
+    <p>Security teams across industries are grappling with a practical problem: AI risk is real and growing, but the governance frameworks your organization knows and trusts — the NIST Cybersecurity Framework chief among them — were designed before generative AI reshaped the threat landscape.</p>
+
+    <p>NIST has since released the AI Risk Management Framework (AI RMF), and it's valuable. But most organizations already have CSF-aligned programs, CISO dashboards built around CSF functions, and audit relationships grounded in CSF language. Starting from scratch with a parallel framework isn't realistic for most security teams right now.</p>
+
+    <p>So here's the practical answer: you can map AI risk to NIST CSF, and you should start doing it now. This post shows you how.</p>
+
+    <h2>Why the NIST CSF Still Applies to AI</h2>
+
+    <p>The NIST CSF 2.0 organizes cybersecurity activities into six core functions: <strong>Govern, Identify, Protect, Detect, Respond, and Recover</strong>. None of these functions become irrelevant because of AI — but each requires AI-specific interpretation and additional controls to remain effective.</p>
+
+    <p>The framework's fundamental logic still holds: you need to govern your risk appetite, identify your assets and vulnerabilities, protect against threats, detect incidents, respond when they occur, and recover from damage. AI introduces new assets (models, training data, AI applications), new vulnerabilities (prompt injection, model poisoning, Shadow AI), and new threat actors (adversaries weaponizing AI) — but the functional structure remains sound.</p>
+
+    <h2>Mapping Each CSF Function to AI Risk</h2>
+
+    <div class="framework-table">
+      <div class="framework-row">
+        <div class="label">GOVERN</div>
+        <div class="desc">Establish AI governance structures, accountability, and risk appetite. Designate AI risk ownership, create an AI acceptable use policy, and build AI into your risk committee agenda. Without governance, all other functions are performative.</div>
+      </div>
+      <div class="framework-row">
+        <div class="label">IDENTIFY</div>
+        <div class="desc">Inventory all AI systems — developed, deployed, and in use across the organization including Shadow AI. Map data flows to and from AI systems. Identify AI-specific risks: model dependencies, training data exposure, third-party AI integrations.</div>
+      </div>
+      <div class="framework-row">
+        <div class="label">PROTECT</div>
+        <div class="desc">Implement AI-specific controls: API security for LLM integrations, access controls on AI systems, data governance for AI training data, employee training on safe AI usage and deepfake recognition, and Shadow AI detection tooling.</div>
+      </div>
+      <div class="framework-row">
+        <div class="label">DETECT</div>
+        <div class="desc">Monitor AI systems for anomalous behavior, prompt injection attempts, unusual output patterns, and unauthorized access. Integrate AI application logs into your SIEM. Build detection rules for AI-specific attack signatures.</div>
+      </div>
+      <div class="framework-row">
+        <div class="label">RESPOND</div>
+        <div class="desc">Update incident response playbooks to include AI-specific scenarios: Shadow AI breach, prompt injection attack, AI-assisted BEC, deepfake fraud. Define escalation paths and containment procedures for AI system compromise.</div>
+      </div>
+      <div class="framework-row">
+        <div class="label">RECOVER</div>
+        <div class="desc">Establish recovery procedures for AI-related incidents including model rollback, retraining after data poisoning, and business continuity when AI-dependent processes are disrupted. Document lessons learned from AI incidents.</div>
+      </div>
+    </div>
+
+    <h2>The Gaps the CSF Doesn't Cover</h2>
+
+    <p>Here's where I'll be direct with you: mapping to the CSF is a good start, but it has limits. The NIST CSF was designed for traditional IT systems. AI systems have characteristics that require additional governance mechanisms the CSF doesn't address.</p>
+
+    <h3>AI-Specific Risks That Need Dedicated Treatment</h3>
+
+    <ul>
+      <li><strong>Model risk and AI system trustworthiness</strong> — How do you assess whether an AI system is making decisions you can trust? The CSF doesn't have a framework for this. The NIST AI RMF's TEVV (Test, Evaluate, Verify, Validate) guidance is where you need to go.</li>
+      <li><strong>Emergent AI behavior</strong> — AI systems can behave in unexpected ways under conditions not covered by their training. Traditional risk assessment methodologies don't account for emergent risk. You need red teaming.</li>
+      <li><strong>Third-party AI risk</strong> — When you use an AI vendor's API, you're inheriting risk that CSF vendor management controls weren't designed to assess. What's in that model's training data? What are the data retention policies? How does prompt injection in their infrastructure affect your application?</li>
+      <li><strong>AI-generated content integrity</strong> — How do you maintain data integrity when AI systems can generate realistic but false content? This is particularly acute for deepfake threats and AI-assisted disinformation.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>The practical recommendation:</strong> Use NIST CSF as your backbone. Layer NIST AI RMF on top of it specifically for AI-specific risks. They are complementary, not competing — and NIST has published guidance on how to use them together.</p>
+    </div>
+
+    <h2>Where to Start: A Prioritized Sequence</h2>
+
+    <p>If you're a security team trying to get AI risk under control without rebuilding your entire program, here's the sequence that delivers the most risk reduction for the effort:</p>
+
+    <ul>
+      <li><strong>Start with Identify.</strong> You cannot manage AI risk you don't know about. Shadow AI discovery is the first priority. Deploy tooling, survey your business units, conduct interviews with department leads. Get a complete picture of what AI is actually in use.</li>
+      <li><strong>Establish Govern next.</strong> AI risk ownership must be defined. Without a named owner and clear governance structure, every other effort will stall when it hits organizational friction.</li>
+      <li><strong>Build Protect controls in parallel.</strong> Acceptable use policies, Shadow AI detection, access controls on AI systems, and employee training can be implemented while the broader inventory work continues.</li>
+      <li><strong>Extend Detect to cover AI.</strong> Update your SIEM correlation rules, add AI application monitoring, and ensure your SOC team understands AI-specific attack patterns they need to watch for.</li>
+      <li><strong>Update Respond playbooks.</strong> Pick three to five AI-specific scenarios and work them through your incident response process. Document what you'd do. Test the gaps.</li>
+    </ul>
+
+    <h2>The Bottom Line</h2>
+
+    <p>NIST CSF wasn't designed for AI — but it's not wrong for AI either. The fundamentals of good cybersecurity governance apply to AI systems just as they apply to everything else. The critical work is identifying where AI requires additional controls and frameworks beyond what CSF provides, then closing those gaps systematically.</p>
+
+    <p>Organizations that start this work now — before AI incidents force their hand — will be in a fundamentally stronger position than those that wait for regulatory clarity, a comprehensive framework, or a breach to prompt action.</p>
+
+    <p>At Outpost Gray, we help organizations build AI governance programs that are grounded in established frameworks and practically implementable. If you'd like help mapping your existing security program to AI risk — or building an AI governance framework from scratch — reach out.</p>
+
+    <div class="cta-box">
+      <h2>Need Help Building Your AI Governance Framework?</h2>
+      <p>Outpost Gray provides AI governance assessments, framework development, and practical implementation support grounded in NIST CSF, NIST AI RMF, and ISO 42001. Let's build something that actually works for your organization.</p>
+      <a href="mailto:jax@outpostgray.com" class="btn btn-primary">Get in Touch →</a>
+      <a href="/" class="btn btn-outline">Our Services</a>
+    </div>
+
+  </article>
+</div>
+
+<footer>
+  <p><a href="/">Outpost Gray</a> · AI Security Consulting led by Jax Scott · <a href="mailto:jax@outpostgray.com">jax@outpostgray.com</a> · <a href="/blog/">More Posts</a></p>
+</footer>
+
+</body>
+</html>
