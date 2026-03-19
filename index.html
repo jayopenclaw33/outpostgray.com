@@ -1137,6 +1137,87 @@
       .contact-btns .btn { text-align: center; }
       .services-intro { flex-direction: column; align-items: flex-start; }
     }
+
+    /* ── BLOG / AI INSIGHTS ── */
+    .ai-insights { background: var(--navy-mid); }
+
+    .blog-grid-og {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .blog-card-og {
+      background: var(--navy-card);
+      border: 1px solid var(--navy-border);
+      border-radius: 14px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .blog-card-og::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--blue), var(--gold));
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+    .blog-card-og:hover {
+      border-color: rgba(0,102,255,0.35);
+      transform: translateY(-5px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.35);
+    }
+    .blog-card-og:hover::after { opacity: 1; }
+
+    .blog-topic-og {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .blog-card-og h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.4;
+      flex: 1;
+    }
+
+    .blog-card-og p {
+      font-size: 0.86rem;
+      color: var(--gray-light);
+      line-height: 1.7;
+    }
+
+    .blog-read-og {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .blog-card-og:hover .blog-read-og { gap: 0.6rem; }
+    .blog-cta-og { text-align: center; margin-top: 2.5rem; }
+
+    @media (max-width: 960px) {
+      .blog-grid-og { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .blog-grid-og { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -1152,6 +1233,7 @@
       <li><a href="#services">Services</a></li>
       <li><a href="#assessments">Assessments</a></li>
       <li><a href="#work-with-us">Pricing</a></li>
+      <li><a href="#blog">Blog</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#quote-form" class="btn btn-primary nav-cta">Get a Quote</a></li>
     </ul>
@@ -1161,6 +1243,7 @@
     <li><a href="#services" onclick="closeNav()">Services</a></li>
     <li><a href="#assessments" onclick="closeNav()">Assessments</a></li>
     <li><a href="#work-with-us" onclick="closeNav()">Pricing</a></li>
+    <li><a href="#blog" onclick="closeNav()">Blog</a></li>
     <li><a href="#about" onclick="closeNav()">About</a></li>
     <li><a href="#quote-form" class="btn btn-primary" style="display:block;text-align:center;" onclick="closeNav()">Get a Quote</a></li>
   </ul>
@@ -1504,6 +1587,48 @@
         <button type="submit" class="btn btn-primary">Join the Intel Briefing</button>
       </form>
       <p class="form-note">No spam. Unsubscribe anytime. Your info stays with us.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── AI INSIGHTS BLOG ── -->
+<section class="ai-insights" id="blog">
+  <div class="container">
+    <div class="services-intro">
+      <div>
+        <span class="section-label">AI Insights</span>
+        <h2 class="section-title">From the Front Lines<br />of AI Security</h2>
+        <p class="section-sub">Real intelligence on AI threats, governance, and what security teams need to know now. Written by practitioners, not pundits.</p>
+      </div>
+      <a href="/blog/" class="btn btn-outline">All Posts →</a>
+    </div>
+    <div class="blog-grid-og">
+
+      <a href="/blog/ai-in-cybersecurity-2026.html" class="blog-card-og">
+        <span class="blog-topic-og">AI Security</span>
+        <h3>AI in Cybersecurity: What Every Business Needs to Know in 2026</h3>
+        <p>AI is reshaping the threat landscape faster than most organizations can respond. Here's what actually matters.</p>
+        <span class="blog-read-og">Read post →</span>
+      </a>
+
+      <a href="/blog/nist-csf-ai-risk.html" class="blog-card-og">
+        <span class="blog-topic-og">Frameworks &amp; Policy</span>
+        <h3>The NIST CSF and AI Risk: A Practical Guide for Security Teams</h3>
+        <p>The NIST Cybersecurity Framework wasn't designed with AI in mind — but here's how to apply it anyway.</p>
+        <span class="blog-read-og">Read post →</span>
+      </a>
+
+      <a href="/blog/zero-trust-ai-agents.html" class="blog-card-og">
+        <span class="blog-topic-og">Zero Trust</span>
+        <h3>Zero Trust + AI Agents: Why Your Security Perimeter Just Changed</h3>
+        <p>AI agents can take actions, access systems, and make decisions. That changes everything about Zero Trust architecture.</p>
+        <span class="blog-read-og">Read post →</span>
+      </a>
+
+    </div>
+    <div class="blog-cta-og">
+      <a href="/blog/" class="btn btn-ghost">View All AI Insights →</a>
     </div>
   </div>
 </section>
