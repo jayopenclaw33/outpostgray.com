@@ -36,4 +36,28 @@
     <priority>0.8</priority>
     <lastmod>2026-03-19</lastmod>
   </url>
+  <url>
+    <loc>https://outpostgray.com/legal/terms.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <lastmod>2026-03-19</lastmod>
+  </url>
+  <url>
+    <loc>https://outpostgray.com/legal/privacy.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <lastmod>2026-03-19</lastmod>
+  </url>
+  <url>
+    <loc>https://outpostgray.com/legal/disclaimer.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <lastmod>2026-03-19</lastmod>
+  </url>
+  <url>
+    <loc>https://outpostgray.com/legal/refund-policy.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <lastmod>2026-03-19</lastmod>
+  </url>
 </urlset>
